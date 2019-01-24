@@ -10,7 +10,7 @@ const cors         = require('cors');
 
 
 mongoose
-  .connect(process.env.DB, {useNewUrlParser: true})
+  .connect("mongodb://localhost/exerciseone-back", {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -67,9 +67,9 @@ app.use('/api/auth', auth);
 app.use('/api/product', product);
 
 
-// app.all('/*', (req, res) => {
-//     res.sendFile(__dirname + '/public/index.html');
-// });
+app.all('/*', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
+});
 
 
 module.exports = app;
